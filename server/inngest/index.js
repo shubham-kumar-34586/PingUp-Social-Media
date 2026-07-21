@@ -41,13 +41,20 @@ const syncUserCreation = inngest.createFunction(
     { id: 'sync-user-from-clerk' },
     { event: 'clerk/user.created' },
     async ({ event }) => {
-
+        throw new Error("THIS IS MY NEW CODE"); // temporary error to test the function
         console.log("===== syncUserCreation START =====");
 
         const { id, first_name, last_name, email_addresses, image_url } = event.data
         console.log("Step 1");
+        // new changes here
+        console.log("EMAIL ADDRESSES:", email_addresses);
 
-        let username = email_addresses[0].email_address.split('@')[0]
+        if (!email_addresses || email_addresses.length === 0) {
+            throw new Error("email_addresses is empty");
+        }
+
+        let username = email_addresses[0].email_address.split('@')[0];
+        // let username = email_addresses[0].email_address.split('@')[0]
         console.log("Step 2:", username);
 
         // check availability of username
