@@ -41,8 +41,12 @@ const syncUserCreation = inngest.createFunction(
     { id: 'sync-user-from-clerk' },
     { event: 'clerk/user.created' },
     async ({ event }) => {
-        throw new Error("THIS IS MY NEW CODE"); // temporary error to test the function
-        console.log("===== syncUserCreation START =====");
+        console.log("========== EVENT DATA ==========");
+        console.log(JSON.stringify(event.data, null, 2));
+        console.log("================================");
+
+    throw new Error("STOP");// temporary error to test the function
+        
 
         const { id, first_name, last_name, email_addresses, image_url } = event.data
         console.log("Step 1");
