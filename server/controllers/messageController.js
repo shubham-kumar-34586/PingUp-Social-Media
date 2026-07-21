@@ -8,7 +8,7 @@ const connections = {};
 // Controller function for the SSE endpoint
 export const sseController = (req, res) => {
     const { userId } = req.params
-    console.log('New client connected : ', userId)
+    // console.log('New client connected : ', userId)
 
     // Set SSE headers
     res.setHeader('Content-Type', 'text/event-stream');

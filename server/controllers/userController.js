@@ -220,9 +220,7 @@ export const getUserConnections = async (req, res) => {
     try {
         const { userId } = req.auth()
         const user = await User.findById(userId).populate('connections followers following')
-        // changing here for test
-        console.log("Logged in Clerk User:", userId);
-        console.log("Mongo User:", user);
+    
 
         const connections = user.connections
         const followers = user.followers
